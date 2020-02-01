@@ -14,7 +14,7 @@ const hasCollided = (playerPos, enemyPositions) =>
     false
   );
 
-function* detectCollision() {
+export function* detectCollision() {
   const playerPos = yield select(getPlayerPos);
   const enemyPositions = yield select(getAllEnemyPositions);
   // Check if player has collided with any of the enemies
