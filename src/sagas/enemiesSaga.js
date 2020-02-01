@@ -1,6 +1,6 @@
 import uuid from "uuid";
 import { eventChannel, END } from "redux-saga";
-import { take, fork, all, select, put, delay } from "redux-saga/effects";
+import { take, call, fork, all, select, put, delay } from "redux-saga/effects";
 import {
   addEnemy,
   removeEnemy,
@@ -120,7 +120,15 @@ function* enemySaga(id = uuid()) {
   }
 }
 
-export default function* handleEnemies() {
+function* enemyInterval() {
+  while (true) {
+    const interval = yield select(getInterval);
+    yield delay(2000); // Update interval every other second
+    yield put(setEnemyInterval(interval * 0.8));
+  }
+}
+
+function* handleEnemies() {
   const enemies = yield select(getEnemies);
   if (!enemies.length) {
     // No enemies yet, spawn new enemy
@@ -129,15 +137,14 @@ export default function* handleEnemies() {
     // Trigger enemySaga for each enemy
     yield all(enemies.map(enemy => fork(enemySaga, enemy.id)));
   }
-  let count = 0;
   while (true) {
     const interval = yield select(getInterval);
     yield delay(interval);
     yield fork(enemySaga);
-    count++;
-    if (count % 4 === 0) {
-      // Decrease interval for every fourth enemy spawned
-      yield put(setEnemyInterval(interval * 0.9));
-    }
   }
+}
+
+export default function* enemiesSaga() {
+  yield fork(enemyInterval);
+  yield call(handleEnemies);
 }

@@ -9,7 +9,7 @@ import { resetGame } from "../actions/gameActions";
 
 const initialState = {
   list: [],
-  interval: 500
+  interval: 1000
 };
 
 export default createReducer(initialState, {
