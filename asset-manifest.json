@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/redux-dodge/static/css/main.d3c6d57d.chunk.css",
+    "main.js": "/redux-dodge/static/js/main.bd606d41.chunk.js",
+    "main.js.map": "/redux-dodge/static/js/main.bd606d41.chunk.js.map",
+    "runtime-main.js": "/redux-dodge/static/js/runtime-main.4f40f62c.js",
+    "runtime-main.js.map": "/redux-dodge/static/js/runtime-main.4f40f62c.js.map",
+    "static/js/2.b6b47973.chunk.js": "/redux-dodge/static/js/2.b6b47973.chunk.js",
+    "static/js/2.b6b47973.chunk.js.map": "/redux-dodge/static/js/2.b6b47973.chunk.js.map",
+    "index.html": "/redux-dodge/index.html",
+    "precache-manifest.bfefe0bbaf959264ce371ed8bbd08c94.js": "/redux-dodge/precache-manifest.bfefe0bbaf959264ce371ed8bbd08c94.js",
+    "service-worker.js": "/redux-dodge/service-worker.js",
+    "static/css/main.d3c6d57d.chunk.css.map": "/redux-dodge/static/css/main.d3c6d57d.chunk.css.map",
+    "static/js/2.b6b47973.chunk.js.LICENSE": "/redux-dodge/static/js/2.b6b47973.chunk.js.LICENSE",
+    "static/media/App.css": "/redux-dodge/static/media/ARCADECLASSIC.5a1a4516.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4f40f62c.js",
+    "static/js/2.b6b47973.chunk.js",
+    "static/css/main.d3c6d57d.chunk.css",
+    "static/js/main.bd606d41.chunk.js"
+  ]
+}
