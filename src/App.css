@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "ArcadeClassic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("./fonts/ArcadeClassic"),
+    url("./fonts/ARCADECLASSIC.woff") format("woff");
+}
+
+body {
+  font-family: "ArcadeClassic";
+}
+
+.App {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+button {
+  font-family: inherit;
+  font-size: 28px;
+  background-color: darkslategray;
+  color: white;
+}
