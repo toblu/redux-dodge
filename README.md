@@ -1,4 +1,4 @@
-### Redux Dodge
+## Redux Dodge
 
 A small game built with React and Redux Saga.
 
