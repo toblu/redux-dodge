@@ -6,10 +6,6 @@
     url("./fonts/ARCADECLASSIC.woff") format("woff");
 }
 
-body {
-  font-family: "ArcadeClassic";
-}
-
 .App {
   text-align: center;
   background-color: #282c34;
