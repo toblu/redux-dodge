@@ -39,6 +39,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.2.0"
+    "gh-pages": "^2.2.0",
+    "redux-saga-test-plan": "^4.0.0-rc.3"
   }
 }

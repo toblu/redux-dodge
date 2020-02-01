@@ -12,7 +12,7 @@ import playerSaga from "./playerSaga";
 import enemiesSaga from "./enemiesSaga";
 import collisionSaga from "./collisionSaga";
 
-function* scoreSaga() {
+export function* scoreSaga() {
   try {
     while (true) {
       const score = yield select(getCurrentPoints);
