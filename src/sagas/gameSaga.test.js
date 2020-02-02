@@ -1,5 +1,11 @@
 import { expectSaga, testSaga } from "redux-saga-test-plan";
-import { startGame, setPoints, setHighscore } from "../actions/gameActions";
+import {
+  startGame,
+  setPoints,
+  setHighscore,
+  GAME_PAUSE,
+  GAME_OVER
+} from "../actions/gameActions";
 import playerSaga from "./playerSaga";
 import gameSaga, { scoreSaga } from "./gameSaga";
 import rootReducer from "../reducers/rootReducer";
@@ -8,13 +14,14 @@ import enemiesSaga from "./enemiesSaga";
 import { getCurrentPoints, getHighscore } from "../selectors/gameSelectors";
 
 describe("Game saga", () => {
-  it("it triggers playerSaga, collisionSaga, enemiesSaga and scoreSaga for GAME_START action", () => {
+  it("triggers playerSaga, collisionSaga, enemiesSaga and scoreSaga for GAME_START action", () => {
     return expectSaga(gameSaga)
       .withReducer(rootReducer)
       .fork(playerSaga)
       .fork(collisionSaga)
       .fork(enemiesSaga)
       .fork(scoreSaga)
+      .take([GAME_OVER, GAME_PAUSE])
       .dispatch(startGame())
       .silentRun();
   });

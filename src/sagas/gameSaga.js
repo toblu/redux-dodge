@@ -3,7 +3,6 @@ import {
   GAME_START,
   GAME_OVER,
   GAME_PAUSE,
-  RESET_GAME,
   setPoints,
   setHighscore
 } from "../actions/gameActions";
@@ -39,7 +38,7 @@ export default function* gameSaga() {
     const collisionTask = yield fork(collisionSaga);
     const pointsTask = yield fork(scoreSaga);
 
-    yield take([GAME_OVER, GAME_PAUSE, RESET_GAME]);
+    yield take([GAME_OVER, GAME_PAUSE]);
     // Cancel all tasks
     yield cancel(playerTask);
     yield cancel(enemiesTask);

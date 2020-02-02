@@ -1,6 +1,4 @@
-import { takeEvery, select, put } from "redux-saga/effects";
-import { PLAYER_MOVE } from "../actions/playerActions";
-import { MOVE_ENEMY } from "../actions/enemiesActions";
+import { call, select, put, delay } from "redux-saga/effects";
 import { gameOver } from "../actions/gameActions";
 import { getPlayerPos } from "../selectors/playerSelectors";
 import { getAllEnemyPositions } from "../selectors/enemySelectors";
@@ -27,6 +25,9 @@ export function* detectCollision() {
 }
 
 export default function* collisionSaga() {
-  // Trigger detectCollision for every time player or an enemy moves
-  yield takeEvery([PLAYER_MOVE, MOVE_ENEMY], detectCollision);
+  while (true) {
+    // Trigger detectCollision every 30ms
+    yield delay(30);
+    yield call(detectCollision);
+  }
 }
