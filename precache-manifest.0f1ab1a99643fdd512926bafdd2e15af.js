@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "365e4585c9ea1246b23ff4977b7f41b9",
+    "revision": "c967147456bc02ec2e2fa5087a589e16",
     "url": "/redux-dodge/index.html"
   },
   {
-    "revision": "77f9891599e38acb3f0e",
+    "revision": "568b3a8753ca9faf0041",
     "url": "/redux-dodge/static/css/main.1ecdbb56.chunk.css"
   },
   {
-    "revision": "f702ba07d9ff8909fa3a",
-    "url": "/redux-dodge/static/js/2.b2e9bc0a.chunk.js"
+    "revision": "40eb06cf261518f1ea1e",
+    "url": "/redux-dodge/static/js/2.570b33a1.chunk.js"
   },
   {
     "revision": "e928fe768baa9832b5bc57eae021f30c",
-    "url": "/redux-dodge/static/js/2.b2e9bc0a.chunk.js.LICENSE"
+    "url": "/redux-dodge/static/js/2.570b33a1.chunk.js.LICENSE"
   },
   {
-    "revision": "77f9891599e38acb3f0e",
-    "url": "/redux-dodge/static/js/main.e253caa2.chunk.js"
+    "revision": "568b3a8753ca9faf0041",
+    "url": "/redux-dodge/static/js/main.72ba157d.chunk.js"
   },
   {
     "revision": "976a22f57bc20095ed84",
