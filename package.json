@@ -17,6 +17,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "prebuild": "rimraf build",
     "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
@@ -40,6 +41,7 @@
   },
   "devDependencies": {
     "gh-pages": "^2.2.0",
-    "redux-saga-test-plan": "^4.0.0-rc.3"
+    "redux-saga-test-plan": "^4.0.0-rc.3",
+    "rimraf": "^3.0.1"
   }
 }
