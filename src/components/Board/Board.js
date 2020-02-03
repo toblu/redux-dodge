@@ -1,11 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import Cube from "../Cube";
+import Player from "../Player";
+import Enemies from "../Enemies";
 import GameOverlay from "../GameOverlay";
 import * as gameActions from "../../actions/gameActions";
 import * as gameSelectors from "../../selectors/gameSelectors";
-import * as playerSelectors from "../../selectors/playerSelectors";
-import * as enemySelectors from "../../selectors/enemySelectors";
 import "./Board.css";
 
 const Board = ({
@@ -15,9 +14,7 @@ const Board = ({
   isGameActive,
   isGamePaused,
   isGameOver,
-  points,
-  player,
-  enemies
+  points
 }) => {
   const renderOverlay = () => {
     if (!isGameStarted) {
@@ -52,10 +49,12 @@ const Board = ({
   return (
     <div className="board">
       {!isGameActive && renderOverlay()}
-      {isGameStarted && <Cube type="player" {...player}></Cube>}
-      {enemies.map(enemy => (
-        <Cube key={enemy.id} type="enemy" {...enemy}></Cube>
-      ))}
+      {isGameStarted && (
+        <>
+          <Player />
+          <Enemies />
+        </>
+      )}
     </div>
   );
 };
@@ -65,9 +64,7 @@ const mapStateToProps = state => ({
   isGameActive: gameSelectors.isGameActive(state),
   isGamePaused: gameSelectors.isGamePaused(state),
   isGameOver: gameSelectors.isGameOver(state),
-  points: gameSelectors.getCurrentPoints(state),
-  player: playerSelectors.getPlayer(state),
-  enemies: enemySelectors.getEnemies(state)
+  points: gameSelectors.getCurrentPoints(state)
 });
 
 const mapDispatchToProps = {

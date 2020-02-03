@@ -5,4 +5,4 @@ const Cube = ({ pos, type }) => (
   <div className={`cube ${type}`} style={{ left: pos.x, top: pos.y }}></div>
 );
 
-export default React.memo(Cube);
+export default Cube;
