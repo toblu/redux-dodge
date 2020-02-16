@@ -1,4 +1,12 @@
-import { take, select, put, fork, cancel, delay } from "redux-saga/effects";
+import {
+  take,
+  select,
+  put,
+  fork,
+  all,
+  cancel,
+  delay
+} from "redux-saga/effects";
 import {
   GAME_START,
   GAME_OVER,
@@ -16,7 +24,7 @@ export function* scoreSaga() {
     while (true) {
       const score = yield select(getCurrentPoints);
       yield delay(1000);
-      // Increase score by 10
+      // Increase score every second
       yield put(setPoints(score + 10));
     }
   } finally {
@@ -33,16 +41,15 @@ export default function* gameSaga() {
   while (true) {
     yield take(GAME_START);
     // Start tasks
-    const playerTask = yield fork(playerSaga);
-    const enemiesTask = yield fork(enemiesSaga);
-    const collisionTask = yield fork(collisionSaga);
-    const pointsTask = yield fork(scoreSaga);
+    const tasks = yield all([
+      fork(playerSaga),
+      fork(enemiesSaga),
+      fork(collisionSaga),
+      fork(scoreSaga)
+    ]);
 
     yield take([GAME_OVER, GAME_PAUSE]);
     // Cancel all tasks
-    yield cancel(playerTask);
-    yield cancel(enemiesTask);
-    yield cancel(collisionTask);
-    yield cancel(pointsTask);
+    yield all(tasks.map(task => cancel(task)));
   }
 }
