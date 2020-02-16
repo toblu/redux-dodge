@@ -50,6 +50,6 @@ export default function* gameSaga() {
 
     yield take([GAME_OVER, GAME_PAUSE]);
     // Cancel all tasks
-    yield all(tasks.map(task => cancel(task)));
+    yield cancel(tasks);
   }
 }
