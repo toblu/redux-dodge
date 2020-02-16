@@ -9,7 +9,7 @@ import {
 } from "../actions/gameActions";
 
 const initialState = {
-  points: 0,
+  score: 0,
   highscore: window.localStorage.getItem("highscore") || 0,
   status: "NOT_STARTED"
 };
@@ -32,7 +32,7 @@ export default createReducer(initialState, {
 
   [setPoints]: (state, action) => ({
     ...state,
-    points: action.payload
+    score: action.payload
   }),
 
   [setHighscore]: (state, action) => {

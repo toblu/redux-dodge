@@ -11,7 +11,7 @@ import gameSaga, { scoreSaga } from "./gameSaga";
 import rootReducer from "../reducers/rootReducer";
 import collisionSaga from "./collisionSaga";
 import enemiesSaga from "./enemiesSaga";
-import { getCurrentPoints, getHighscore } from "../selectors/gameSelectors";
+import { getCurrentScore, getHighscore } from "../selectors/gameSelectors";
 
 describe("Game saga", () => {
   it("triggers playerSaga, collisionSaga, enemiesSaga and scoreSaga for GAME_START action", () => {
@@ -29,13 +29,13 @@ describe("Game saga", () => {
   it("updates score every second", () => {
     testSaga(scoreSaga)
       .next()
-      .select(getCurrentPoints)
+      .select(getCurrentScore)
       .next(0)
       .delay(1000)
       .next()
       .put(setPoints(10))
       .next()
-      .select(getCurrentPoints)
+      .select(getCurrentScore)
       .next(10)
       .delay(1000)
       .next()
@@ -46,7 +46,7 @@ describe("Game saga", () => {
     testSaga(scoreSaga)
       .next()
       .finish()
-      .select(getCurrentPoints)
+      .select(getCurrentScore)
       .next(20)
       .select(getHighscore)
       .next(10)
@@ -59,7 +59,7 @@ describe("Game saga", () => {
     testSaga(scoreSaga)
       .next()
       .finish()
-      .select(getCurrentPoints)
+      .select(getCurrentScore)
       .next(10)
       .select(getHighscore)
       .next(20)

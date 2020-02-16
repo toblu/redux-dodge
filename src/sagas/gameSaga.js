@@ -14,7 +14,7 @@ import {
   setPoints,
   setHighscore
 } from "../actions/gameActions";
-import { getCurrentPoints, getHighscore } from "../selectors/gameSelectors";
+import { getCurrentScore, getHighscore } from "../selectors/gameSelectors";
 import playerSaga from "./playerSaga";
 import enemiesSaga from "./enemiesSaga";
 import collisionSaga from "./collisionSaga";
@@ -22,13 +22,13 @@ import collisionSaga from "./collisionSaga";
 export function* scoreSaga() {
   try {
     while (true) {
-      const score = yield select(getCurrentPoints);
+      const score = yield select(getCurrentScore);
       yield delay(1000);
       // Increase score every second
       yield put(setPoints(score + 10));
     }
   } finally {
-    const score = yield select(getCurrentPoints);
+    const score = yield select(getCurrentScore);
     const highscore = yield select(getHighscore);
     if (score > highscore) {
       // Update highscore

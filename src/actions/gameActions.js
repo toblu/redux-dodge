@@ -9,7 +9,7 @@ export const pauseGame = createAction(GAME_PAUSE);
 export const GAME_OVER = "game/GAME_OVER";
 export const gameOver = createAction(GAME_OVER);
 
-export const SET_POINTS = "game/POINTS";
+export const SET_POINTS = "game/SCORE";
 export const setPoints = createAction(SET_POINTS);
 
 export const SET_HIGHSCORE = "game/SET_HIGHSCORE";

@@ -1,6 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-export const getCurrentPoints = state => state.game.points;
+export const getCurrentScore = state => state.game.score;
 export const getHighscore = state => state.game.highscore;
 export const getGameStatus = state => state.game.status;
 

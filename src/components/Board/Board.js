@@ -14,7 +14,7 @@ const Board = ({
   isGameActive,
   isGamePaused,
   isGameOver,
-  points
+  score
 }) => {
   const renderOverlay = () => {
     if (!isGameStarted) {
@@ -39,7 +39,7 @@ const Board = ({
       return (
         <GameOverlay>
           <h1>GAME OVER</h1>
-          <h2>SCORE: {points}</h2>
+          <h2>SCORE: {score}</h2>
           <button onClick={() => resetGame()}>Play again</button>
         </GameOverlay>
       );
@@ -64,7 +64,7 @@ const mapStateToProps = state => ({
   isGameActive: gameSelectors.isGameActive(state),
   isGamePaused: gameSelectors.isGamePaused(state),
   isGameOver: gameSelectors.isGameOver(state),
-  points: gameSelectors.getCurrentPoints(state)
+  score: gameSelectors.getCurrentScore(state)
 });
 
 const mapDispatchToProps = {

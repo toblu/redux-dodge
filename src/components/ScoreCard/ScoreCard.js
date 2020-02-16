@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getCurrentPoints, getHighscore } from "../../selectors/gameSelectors";
+import { getCurrentScore, getHighscore } from "../../selectors/gameSelectors";
 import "./ScoreCard.css";
 
 const ScoreCard = ({ score, highscore }) => (
@@ -11,7 +11,7 @@ const ScoreCard = ({ score, highscore }) => (
 );
 
 const mapStateToProps = state => ({
-  score: getCurrentPoints(state),
+  score: getCurrentScore(state),
   highscore: getHighscore(state)
 });
 
