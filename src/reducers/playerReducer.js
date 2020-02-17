@@ -1,11 +1,12 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { playerMove } from "../actions/playerActions";
 import { resetGame } from "../actions/gameActions";
+import config from "../config";
 
 const initialState = {
   pos: {
-    x: 280,
-    y: 280
+    x: (config.boardWidth - config.cubeSize) / 2,
+    y: (config.boardHeight - config.cubeSize) / 2
   }
 };
 

@@ -9,10 +9,13 @@ import {
 } from "../actions/enemiesActions";
 import { getEnemies, getEnemy, getInterval } from "../selectors/enemySelectors";
 import { isGameActive } from "../selectors/gameSelectors";
+import config from "../config";
 
-const STEP = 40;
-
-const isOutsideOfBounds = (x, y) => x < -40 || x > 600 || y < -40 || y > 600;
+const isOutsideOfBounds = (x, y) =>
+  x < -config.cubeSize ||
+  x > config.boardWidth ||
+  y < -config.cubeSize ||
+  y > config.boardHeight;
 
 const enemyMoveChannel = (startingPos, direction) => {
   const pos = { ...startingPos };
@@ -24,19 +27,19 @@ const enemyMoveChannel = (startingPos, direction) => {
       } else {
         switch (direction) {
           case "U": {
-            pos.y -= STEP / 4;
+            pos.y -= config.enemyStep;
             break;
           }
           case "R": {
-            pos.x += STEP / 4;
+            pos.x += config.enemyStep;
             break;
           }
           case "D": {
-            pos.y += STEP / 4;
+            pos.y += config.enemyStep;
             break;
           }
           case "L": {
-            pos.x -= STEP / 4;
+            pos.x -= config.enemyStep;
             break;
           }
           default:
@@ -44,7 +47,7 @@ const enemyMoveChannel = (startingPos, direction) => {
         }
         emitter(pos);
       }
-    }, 50);
+    }, config.enemyMoveInterval);
     return () => {
       // Unsubscribe interval
       clearInterval(iv);
@@ -56,32 +59,44 @@ const generateRandomStartingPos = () => {
   const directions = ["U", "R", "D", "L"]; // [up, right, down, left]
   const direction = directions[Math.round(3 * Math.random())];
 
+  const randomXpos = () =>
+    config.cubeSize *
+    Math.round(
+      ((config.boardWidth - config.cubeSize) / config.cubeSize) * Math.random()
+    );
+
+  const randomYpos = () =>
+    config.cubeSize *
+    Math.round(
+      ((config.boardHeight - config.cubeSize) / config.cubeSize) * Math.random()
+    );
+
   switch (direction) {
     case "U":
       return {
-        x: 20 * Math.round(28 * Math.random()),
-        y: 600,
+        x: randomXpos(),
+        y: config.boardHeight,
         direction
       };
 
     case "R":
       return {
-        x: -40,
-        y: 20 * Math.round(28 * Math.random()),
+        x: -config.cubeSize,
+        y: randomYpos(),
         direction
       };
 
     case "D":
       return {
-        x: 20 * Math.round(28 * Math.random()),
-        y: -40,
+        x: randomXpos(),
+        y: -config.cubeSize,
         direction
       };
 
     case "L":
       return {
-        x: 600,
-        y: 20 * Math.round(28 * Math.random()),
+        x: config.boardWidth,
+        y: randomYpos(),
         direction
       };
 

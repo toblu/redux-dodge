@@ -5,6 +5,7 @@ import Enemies from "../Enemies";
 import GameOverlay from "../GameOverlay";
 import * as gameActions from "../../actions/gameActions";
 import * as gameSelectors from "../../selectors/gameSelectors";
+import config from '../../config';
 import "./Board.css";
 
 const Board = ({
@@ -47,7 +48,7 @@ const Board = ({
   };
 
   return (
-    <div className="board">
+    <div className="board" style={{height: config.boardHeight, width: config.boardWidth}}>
       {!isGameActive && renderOverlay()}
       {isGameStarted && (
         <>

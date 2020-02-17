@@ -4,8 +4,7 @@ import { pauseGame } from "../actions/gameActions";
 import { playerMove } from "../actions/playerActions";
 import { getPlayerPos } from "../selectors/playerSelectors";
 import { isGameActive } from "../selectors/gameSelectors";
-
-const STEP = 40;
+import config from "../config";
 
 const playerInteractionChannel = startingPos => {
   const pos = { ...startingPos };
@@ -16,23 +15,29 @@ const playerInteractionChannel = startingPos => {
 
       switch (e.code) {
         case "ArrowUp":
-          if (pos.y >= 40) {
-            pos.y -= STEP;
+          if (pos.y >= config.playerStep) {
+            pos.y -= config.playerStep;
           }
           break;
         case "ArrowRight":
-          if (pos.x <= 520) {
-            pos.x += STEP;
+          if (
+            pos.x <=
+            config.boardWidth - config.cubeSize - config.playerStep
+          ) {
+            pos.x += config.playerStep;
           }
           break;
         case "ArrowDown":
-          if (pos.y <= 520) {
-            pos.y += STEP;
+          if (
+            pos.y <=
+            config.boardHeight - config.cubeSize - config.playerStep
+          ) {
+            pos.y += config.playerStep;
           }
           break;
         case "ArrowLeft":
-          if (pos.x >= 40) {
-            pos.x -= STEP;
+          if (pos.x >= config.playerStep) {
+            pos.x -= config.playerStep;
           }
           break;
         case "Escape":
