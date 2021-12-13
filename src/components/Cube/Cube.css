@@ -1,7 +1,7 @@
 .cube {
   position: absolute;
   background: black;
-  transition: all 25ms linear;
+  transition: all 50ms linear;
 }
 
 .player {
